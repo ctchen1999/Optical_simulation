@@ -1,0 +1,27 @@
+classdef ground<handle
+    properties (SetAccess = private)
+        slope
+        b
+    end
+    
+	methods
+        function self = ground(slope,b,world)
+            self.slope = slope;
+            self.b = b;
+            
+            figure(1),
+            gx=linspace(world.bxL,world.bxR,1000);
+            gy=slope*gx.^2;
+            plot(gx,gy,'k');
+            axis([world.bxL world.bxR world.byB world.byT]);
+        end
+        
+        function obj = draw_g(obj,world)
+            figure(1),
+            gx=linspace(obj.left,obj.right,1000);
+            gy=obj.slope*gx.^2;
+            plot(gx,gy,'k');
+            axis([world.bxL world.bxR world.byB world.byT]);
+        end
+	end
+end

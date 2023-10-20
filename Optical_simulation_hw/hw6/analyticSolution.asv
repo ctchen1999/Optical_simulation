@@ -1,0 +1,5 @@
+function [t] = analyticSolution(normalized_D, Origin, Center)
+t = zeros([1,2]);
+a = D.^2;
+b = 2*D*(Origin)
+end

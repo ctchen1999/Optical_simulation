@@ -1,0 +1,31 @@
+%% problem 
+% 1. how do you judge simulation
+% 2. (1) change 
+%    (2) what effects that will affect the result?
+
+%% Laplace eq. lecture source: 
+% 1. https://www.youtube.com/watch?v=-D4GDdxJrpg
+
+%% test
+clc; clear; close all;
+field = ones(20,20); % 20x20 field matrix
+field(:, 1) = 20; % left boundary
+field(:, end) = 5; % right boundary
+field(1,:) = 0; % upper boundary
+field(end, :) = 10; % lower boundary
+
+for time = 1:100000
+    for i = 2:size(field,1)-1
+        for j = 2:size(field,2)-1
+            field(i,j) = (field(i+1,j) + field(i-1,j) + field(i,j+1) + field(i,j-1)) / 4;
+        end
+    end
+end
+
+x = 1:size(field,2); y = 1:size(field,1); z = field;
+[x, y] = meshgrid(x,y);
+[px, py] = gradient(z,1,1);
+
+contour(x,y,z)
+quiver(x,y,px,py,4)
+axis([0 size(field,2) 0 size(field,1)])

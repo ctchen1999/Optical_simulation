@@ -1,0 +1,4 @@
+clc; clear; close all;
+%%
+img = imread('IMG_6188.jpg');
+

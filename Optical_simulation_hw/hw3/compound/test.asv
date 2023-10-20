@@ -1,0 +1,2 @@
+syms k
+Rot(k)=[cos(k),-sin(k);sin(k),cos(k)];
